@@ -160,7 +160,7 @@ function Register() {
                 console.log(response);
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("isWorker", response.data.isWorker);
-                window.location.href = "/reservations";
+                window.location.href = "/";
               },
               (error) => {
                 console.log(error);

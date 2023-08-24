@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import axios from "axios";
 
 function TopNavbar() {
   if (localStorage.getItem("token") != null) {
@@ -66,7 +67,15 @@ function TopNavbar() {
                   Delete
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/login">Log out</Nav.Link>
+              <Nav.Link
+                href="/login"
+                onClick={() => {
+                  localStorage.clear();
+                }}
+              >
+                {" "}
+                Log out
+              </Nav.Link>
             </Nav>
             <Navbar.Toggle />
           </Navbar.Collapse>
