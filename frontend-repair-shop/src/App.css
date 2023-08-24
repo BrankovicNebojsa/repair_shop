@@ -182,18 +182,14 @@ button {
 odavde je moj kod
 */
 
-.showBrands h1 {
-  text-align: center;
-}
-
 .add-brand h1 {
   text-align: center;
 }
 
-.showModels h1 {
+.add-model h1 {
   text-align: center;
 }
 
-.add-model h1 {
+.add-engine h1 {
   text-align: center;
 }

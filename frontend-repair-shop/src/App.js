@@ -8,6 +8,11 @@ import ShowBrands from "./components/ShowBrands";
 import AddBrand from "./components/AddBrand";
 import AddModel from "./components/AddModel";
 import ShowModels from "./components/ShowModels";
+import AddEngine from "./components/AddEngine";
+import ShowEngines from "./components/ShowEngines";
+import ShowCars from "./components/ShowCars";
+import AddCar from "./components/AddCar";
+import AddReservation from "./components/AddReservation";
 
 const urlBase = "localhost:8080";
 
@@ -28,7 +33,12 @@ function App() {
               <Route path="/brands/add" element={<AddBrand />} />
               <Route path="/models" element={<ShowModels />} />
               <Route path="/models/add" element={<AddModel />} />
-
+              <Route path="/engines" element={<ShowEngines />} />
+              <Route path="/engines/add" element={<AddEngine />} />
+              <Route path="/cars" element={<ShowCars />} />
+              <Route path="/cars/add" element={<AddCar />} />
+              {/* <Route path="/reservations" element={<ShowCars />} /> */}
+              <Route path="/reservations/add" element={<AddReservation />} />
             </Routes>
           </div>
         </div>
