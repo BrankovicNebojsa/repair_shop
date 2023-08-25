@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 function AddReservation() {
   const [date, setDate] = useState("");
@@ -19,6 +19,27 @@ function AddReservation() {
   const handleChangeMechanicUsername = (event) => {
     setMechanicUsername(event.target.value);
   };
+
+  const [mechanics, setMechanics] = useState([]);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "/api/v1/users/mechanics",
+      baseURL: "http://localhost:8080",
+      data: {},
+      headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+    }).then(
+      (response) => {
+        console.log(response);
+        setMechanics(response.data);
+        console.log(mechanics);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }, []);
 
   return (
     <div className="add-reservation">
@@ -53,12 +74,17 @@ function AddReservation() {
           </label>
         </div>
 
-        <Form.Select aria-label="Default select example">
-          <option>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <Form.Select
+          aria-label="Default select example"
+          onChange={handleChangeMechanicUsername}
+        >
+          {mechanics?.map((mechanic, index) => (
+            <option value={mechanic.username}>
+              {mechanic.firstName} {mechanic.lastName}
+            </option>
+          ))}
         </Form.Select>
+        <br></br>
 
         <button
           type="button"

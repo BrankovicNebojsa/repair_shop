@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -46,7 +46,13 @@ function ShowModels() {
         </tbody>
       </table>
       <br></br>
-      <button type="button" class="btn btn-primary" onClick={() => navigate("/models/add")}>Add a model</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        onClick={() => navigate("/models/add")}
+      >
+        Add a model
+      </button>
     </div>
   );
 }
