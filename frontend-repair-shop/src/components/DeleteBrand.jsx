@@ -81,11 +81,10 @@ function DeleteBrand() {
       </div>
     );
   } else {
+    window.location.href = "/";
     return (
-        <div>
-            <h1>No access</h1>
-        </div>
-    )
+      <div></div>
+    );
   }
 }
 
