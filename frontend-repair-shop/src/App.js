@@ -19,6 +19,7 @@ import DeleteEngine from "./components/DeleteEngine";
 import TopNavbar from "./components/Navbar";
 import DeleteCar from "./components/DeleteCar";
 import DeleteReservation from "./components/DeleteReservation";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/profile" element={<Profile />} />
 
               <Route path="/brands" element={<ShowBrands />} />
               <Route path="/brands/add" element={<AddBrand />} />

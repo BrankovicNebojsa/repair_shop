@@ -66,15 +66,17 @@ function TopNavbar() {
                   Delete
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link
-                href="/login"
-                onClick={() => {
-                  localStorage.clear();
-                }}
-              >
-                {" "}
-                Log out
-              </Nav.Link>
+              <NavDropdown title="Profile" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/profile">Edit</NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/login"
+                  onClick={() => {
+                    localStorage.clear();
+                  }}
+                >
+                  Log out
+                </NavDropdown.Item>
+              </NavDropdown>
             </Nav>
             <Navbar.Toggle />
           </Navbar.Collapse>
