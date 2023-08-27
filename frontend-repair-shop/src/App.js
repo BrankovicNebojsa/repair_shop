@@ -20,6 +20,8 @@ import TopNavbar from "./components/Navbar";
 import DeleteCar from "./components/DeleteCar";
 import DeleteReservation from "./components/DeleteReservation";
 import Profile from "./components/Profile";
+import PriceCatalog from "./components/PriceCatalog";
+import { useState } from "react";
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/prices" element={<PriceCatalog />} />
 
               <Route path="/brands" element={<ShowBrands />} />
               <Route path="/brands/add" element={<AddBrand />} />
@@ -54,7 +57,10 @@ function App() {
 
               <Route path="/reservations" element={<ShowReservations />} />
               <Route path="/reservations/add" element={<AddReservation />} />
-              <Route path="/reservations/delete" element={<DeleteReservation />} />
+              <Route
+                path="/reservations/delete"
+                element={<DeleteReservation />}
+              />
             </Routes>
           </div>
         </div>

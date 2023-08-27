@@ -70,6 +70,7 @@ function TopNavbar() {
                   Delete
                 </NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link href="/prices">Prices</Nav.Link>
               <NavDropdown title="Profile" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/profile">Edit</NavDropdown.Item>
                 <NavDropdown.Item
