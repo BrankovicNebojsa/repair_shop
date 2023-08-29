@@ -1,9 +1,10 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function ShowCars() {
   const navigate = useNavigate();
+  const [filter, setFilter] = useState("");
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -25,9 +26,107 @@ function ShowCars() {
     );
   }, []);
 
+  const handleChangeFilter = (event) => {
+    setFilter(event.target.value);
+  };
+
   return (
     <div className="showCars">
       <h1>Cars</h1>
+      <br></br>
+      <div className="form-outline mb-4">
+        <input
+          type="text"
+          id="filter"
+          className="form-control"
+          name="filter"
+          value={filter}
+          onChange={handleChangeFilter}
+        />
+        <label className="form-label" for="form2Example1">
+          Filter
+        </label>
+        <br></br>
+        <button
+          type="button"
+          class="btn btn-primary"
+          onClick={() => {
+            axios({
+              method: "GET",
+              url: "/api/v1/cars/" + filter,
+              baseURL: "http://localhost:8080",
+              data: {},
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
+            }).then(
+              (response) => {
+                console.log(response);
+                setData(response.data);
+                console.log(data);
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          }}
+        >
+          Apply
+        </button>
+      </div>
+      <br></br>
+      <button
+        type="button"
+        class="btn btn-primary"
+        onClick={() => {
+          axios({
+            method: "GET",
+            url: "/api/v1/cars/sorted-asc",
+            baseURL: "http://localhost:8080",
+            data: {},
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }).then(
+            (response) => {
+              console.log(response);
+              setData(response.data);
+              console.log(data);
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        }}
+      >
+        Sort ASC
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        onClick={() => {
+          axios({
+            method: "GET",
+            url: "/api/v1/cars/sorted-desc",
+            baseURL: "http://localhost:8080",
+            data: {},
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }).then(
+            (response) => {
+              console.log(response);
+              setData(response.data);
+              console.log(data);
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        }}
+      >
+        Sort DESC
+      </button>
       <br></br>
       <table className="table">
         <thead className="thead-dark">

@@ -114,7 +114,7 @@ function PriceCatalog() {
             <tr>
               <td>{el.id}</td>
               <td>{el.nameOfService}</td>
-              <td>{el.price * rate}</td>
+              <td>{(el.price * rate).toFixed(2)}</td>
             </tr>
           ))}
         </tbody>

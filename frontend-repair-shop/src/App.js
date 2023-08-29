@@ -21,7 +21,6 @@ import DeleteCar from "./components/DeleteCar";
 import DeleteReservation from "./components/DeleteReservation";
 import Profile from "./components/Profile";
 import PriceCatalog from "./components/PriceCatalog";
-import { useState } from "react";
 
 function App() {
   return (
