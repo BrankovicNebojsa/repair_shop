@@ -6,12 +6,16 @@ import com.mechanics_store.model.Car;
 import com.mechanics_store.model.Color;
 import com.mechanics_store.model.Engine;
 import com.mechanics_store.model.Model;
+import com.mechanics_store.model.Reservation;
 import com.mechanics_store.model.Transmission;
 import com.mechanics_store.model.User;
 import com.mechanics_store.repository.CarRepository;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -83,12 +87,28 @@ public class CarService {
         return carRepository.findAllByOwner(user);
     }
 
+    public List<Car> findAllWhere(String licensePlate) {
+        return carRepository.findUsersByKeyword(licensePlate);
+    }
+
+    public List<Car> findAllWhereOwner(String licensePlate, User user) {
+        return carRepository.findUsersByKeywordForOwner(licensePlate, user.getId());
+    }
+
     public Optional<Car> findByLicensePlate(String licensePlate) {
         return carRepository.findByLicensePlate(licensePlate);
     }
 
     public List<Car> findAll() {
         return carRepository.findAll();
+    }
+
+    public List<Car> findAllASC() {
+        return carRepository.findAll(Sort.by(Sort.Direction.ASC, "licensePlate"));
+    }
+
+    public List<Car> findAllDESC() {
+        return carRepository.findAll(Sort.by(Sort.Direction.DESC, "licensePlate"));
     }
 
     public Car update(Car car) {

@@ -37,12 +37,44 @@ public class CarController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<List<CarDTO>> getAllCars() {
         if (userService.isCurrentUserAWorker()) {
             return ResponseEntity.ok(carMapper.entitiesToDTOs(carService.findAll()));
         } else {
             return ResponseEntity.ok(carMapper.entitiesToDTOs(carService.findCarsOfOwner(userService.getCurrentUser())));
+        }
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<CarDTO>> getAllCars2() {
+        return getAllCars();
+    }
+
+    @GetMapping("/sorted-asc")
+    public ResponseEntity<List<CarDTO>> getAllCarsASC() {
+        if (userService.isCurrentUserAWorker()) {
+            return ResponseEntity.ok(carMapper.entitiesToDTOs(carService.findAllASC()));
+        } else {
+            return getAllCars();
+        }
+    }
+
+    @GetMapping("/sorted-desc")
+    public ResponseEntity<List<CarDTO>> getAllCarsDESC() {
+        if (userService.isCurrentUserAWorker()) {
+            return ResponseEntity.ok(carMapper.entitiesToDTOs(carService.findAllDESC()));
+        } else {
+            return getAllCars();
+        }
+    }
+
+    @GetMapping("/{licensePlate}")
+    public ResponseEntity<List<CarDTO>> getAllReservationsWhereDate(@PathVariable String licensePlate) {
+        if (userService.isCurrentUserAWorker()) {
+            return ResponseEntity.ok(carMapper.entitiesToDTOs(carService.findAllWhere(licensePlate)));
+        } else {
+            return ResponseEntity.ok(carMapper.entitiesToDTOs(carService.findAllWhereOwner(licensePlate, userService.getCurrentUser())));
         }
     }
 

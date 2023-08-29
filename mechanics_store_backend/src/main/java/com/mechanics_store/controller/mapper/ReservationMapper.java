@@ -37,7 +37,7 @@ public class ReservationMapper implements Mapper<Reservation, ReservationDTO> {
 
     @Override
     public Reservation DTOToEntity(ReservationDTO reservationDTO) {
-        if (reservationDTO.date().length() < 16) {
+        if (reservationDTO.date().length() < 14) {
             throw new IllegalArgumentException("Date is not complete.");
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
